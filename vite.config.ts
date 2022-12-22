@@ -13,6 +13,15 @@ export default defineConfig({
         'vue',
         'vue-router',
         '@vueuse/core',
+        {
+          animol: [
+            ['css', 'animate'],
+            'ease',
+            ['Easing', 'easing'],
+            'parseColor',
+            'blend',
+          ],
+        },
       ],
       dts: 'src/auto-imports.d.ts',
       dirs: [

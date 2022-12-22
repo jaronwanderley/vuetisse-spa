@@ -11,7 +11,10 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "vue": "^3.2.45"
+    "@vueuse/core": "^9.8.2",
+    "animol": "^1.0.12",
+    "vue": "^3.2.45",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.34.0",
