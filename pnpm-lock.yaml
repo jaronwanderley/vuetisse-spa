@@ -9,6 +9,7 @@ specifiers:
   typescript: ^4.9.3
   unocss: ^0.48.0
   unplugin-auto-import: ^0.12.1
+  unplugin-vue-components: ^0.22.12
   vite: ^4.0.0
   vue: ^3.2.45
   vue-router: ^4.1.6
@@ -27,6 +28,7 @@ devDependencies:
   typescript: 4.9.4
   unocss: 0.48.0_vite@4.0.3
   unplugin-auto-import: 0.12.1_@vueuse+core@9.8.2
+  unplugin-vue-components: 0.22.12_vue@3.2.45
   vite: 4.0.3
   vue-tsc: 1.0.16_typescript@4.9.4
 
@@ -3193,6 +3195,32 @@ packages:
       unplugin: 1.0.1
     transitivePeerDependencies:
       - rollup
+    dev: true
+
+  /unplugin-vue-components/0.22.12_vue@3.2.45:
+    resolution: {integrity: sha512-FxyzsuBvMCYPIk+8cgscGBQ345tvwVu+qY5IhE++eorkyvA4Z1TiD/HCiim+Kbqozl10i4K+z+NCa2WO2jexRA==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      '@babel/parser': ^7.15.8
+      vue: 2 || 3
+    peerDependenciesMeta:
+      '@babel/parser':
+        optional: true
+    dependencies:
+      '@antfu/utils': 0.7.2
+      '@rollup/pluginutils': 5.0.2
+      chokidar: 3.5.3
+      debug: 4.3.4
+      fast-glob: 3.2.12
+      local-pkg: 0.4.2
+      magic-string: 0.27.0
+      minimatch: 5.1.2
+      resolve: 1.22.1
+      unplugin: 1.0.1
+      vue: 3.2.45
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
     dev: true
 
   /unplugin/1.0.1:
