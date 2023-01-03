@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const logobase = ref(null)
-const logo = ref(null)
+const logobase = ref(null) as unknown as { value: HTMLElement }
+const logo = ref(null) as unknown as { value: HTMLElement }
 
 const animateHover = () => {
   animate(logobase.value, 400, {}, { transform: { translateZ: '70px' } })
