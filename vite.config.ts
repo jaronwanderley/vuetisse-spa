@@ -15,6 +15,7 @@ export default defineConfig({
       imports: [
         'vue',
         'vue-router',
+        'vue/macros',
         '@vueuse/core',
         {
           animol: [
@@ -24,6 +25,7 @@ export default defineConfig({
             'parseColor',
             'blend',
           ],
+          redaxios: ['default', 'axios'],
         },
       ],
       dts: 'src/auto-imports.d.ts',

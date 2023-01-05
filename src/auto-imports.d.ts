@@ -12,6 +12,7 @@ declare global {
   const animate: typeof import('animol')['css']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
+  const axios: typeof import('redaxios')['axios']
   const blend: typeof import('animol')['blend']
   const computed: typeof import('vue')['computed']
   const computedAsync: typeof import('@vueuse/core')['computedAsync']
@@ -30,6 +31,7 @@ declare global {
   const customRef: typeof import('vue')['customRef']
   const debouncedRef: typeof import('@vueuse/core')['debouncedRef']
   const debouncedWatch: typeof import('@vueuse/core')['debouncedWatch']
+  const default: typeof import('redaxios')['default']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
   const eagerComputed: typeof import('@vueuse/core')['eagerComputed']
@@ -280,10 +282,18 @@ declare global {
 import { UnwrapRef } from 'vue'
 declare module 'vue' {
   interface ComponentCustomProperties {
+    readonly $$: UnwrapRef<typeof import('vue/macros')['$$']>
+    readonly $: UnwrapRef<typeof import('vue/macros')['$']>
+    readonly $computed: UnwrapRef<typeof import('vue/macros')['$computed']>
+    readonly $customRef: UnwrapRef<typeof import('vue/macros')['$customRef']>
+    readonly $ref: UnwrapRef<typeof import('vue/macros')['$ref']>
+    readonly $shallowRef: UnwrapRef<typeof import('vue/macros')['$shallowRef']>
+    readonly $toRef: UnwrapRef<typeof import('vue/macros')['$toRef']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly animate: UnwrapRef<typeof import('animol')['css']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
+    readonly axios: UnwrapRef<typeof import('redaxios')['axios']>
     readonly blend: UnwrapRef<typeof import('animol')['blend']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly computedAsync: UnwrapRef<typeof import('@vueuse/core')['computedAsync']>
@@ -302,6 +312,7 @@ declare module 'vue' {
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly debouncedRef: UnwrapRef<typeof import('@vueuse/core')['debouncedRef']>
     readonly debouncedWatch: UnwrapRef<typeof import('@vueuse/core')['debouncedWatch']>
+    readonly default: UnwrapRef<typeof import('redaxios')['default']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly eagerComputed: UnwrapRef<typeof import('@vueuse/core')['eagerComputed']>
