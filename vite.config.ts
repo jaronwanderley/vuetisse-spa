@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import Pages from 'vite-plugin-pages'
 import type { VitePWAOptions } from 'vite-plugin-pwa'
 import { VitePWA } from 'vite-plugin-pwa'
 import pwaConfig from './pwa.config'
@@ -20,7 +21,9 @@ export default defineConfig({
     vue({
       reactivityTransform: true,
     }),
+
     Unocss(),
+
     AutoImport({
       imports: [
         'vue',
@@ -45,12 +48,18 @@ export default defineConfig({
       ],
       vueTemplate: true,
     }),
+
     Components({
       extensions: ['vue', 'md'],
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       dts: 'src/components.d.ts',
     }),
+
     VitePWA(pwaConfig as Partial<VitePWAOptions>),
+
+    Pages({
+      extensions: ['vue'],
+    }),
   ],
 
   test: {
