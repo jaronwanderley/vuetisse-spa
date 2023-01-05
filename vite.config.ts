@@ -1,4 +1,5 @@
-import { defineConfig } from 'vite'
+import path from 'path'
+import { defineConfig } from 'vitest/config'
 import vue from '@vitejs/plugin-vue'
 import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -9,6 +10,12 @@ import pwaConfig from './pwa.config'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: {
+      '~/': `${path.resolve(__dirname, 'src')}/`,
+    },
+  },
+
   plugins: [
     vue({
       reactivityTransform: true,
@@ -45,4 +52,12 @@ export default defineConfig({
     }),
     VitePWA(pwaConfig as Partial<VitePWAOptions>),
   ],
+
+  test: {
+    include: ['src/**/*.test.ts'],
+    environment: 'jsdom',
+    deps: {
+      inline: ['@vue', '@vueuse', 'vue-demi'],
+    },
+  },
 })
