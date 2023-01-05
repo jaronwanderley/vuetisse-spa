@@ -31,27 +31,25 @@ const animateMouseMove = (event: MouseEvent) => {
 </script>
 
 <template>
-  <div>
-    <a
-      href="https://github.com/jaronwanderley"
-      target="_blank"
-      class="inline-block perspective-400 min-w-60 min-h-60"
+  <a
+    href="https://github.com/jaronwanderley"
+    target="_blank"
+    class="inline-block perspective-400 min-w-60 min-h-60"
+  >
+    <div
+      ref="logobase"
+      class="bg-slate-2/50 rounded-3xl"
+      style="transform-style: preserve-3d"
+      @mouseenter="animateHover"
+      @mouseleave="animateLeave"
+      @mousemove="animateMouseMove"
     >
-      <div
-        ref="logobase"
-        class="bg-slate-2/50 rounded-3xl"
-        style="transform-style: preserve-3d"
-        @mouseenter="animateHover"
-        @mouseleave="animateLeave"
-        @mousemove="animateMouseMove"
+      <img
+        ref="logo"
+        src="/jrnwn-logo.svg"
+        class="logo"
+        alt="Logo of the creator of this webpage"
       >
-        <img
-          ref="logo"
-          src="/jrnwn-logo.svg"
-          class="logo"
-          alt="Logo of the creator of this webpage"
-        >
-      </div>
-    </a>
-  </div>
+    </div>
+  </a>
 </template>
