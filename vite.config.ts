@@ -3,6 +3,9 @@ import vue from '@vitejs/plugin-vue'
 import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import type { VitePWAOptions } from 'vite-plugin-pwa'
+import { VitePWA } from 'vite-plugin-pwa'
+import pwaConfig from './pwa.config'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -40,5 +43,6 @@ export default defineConfig({
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       dts: 'src/components.d.ts',
     }),
+    VitePWA(pwaConfig as Partial<VitePWAOptions>),
   ],
 })
