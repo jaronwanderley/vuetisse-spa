@@ -1,11 +1,14 @@
 import { createApp } from 'vue'
 import './style.css'
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { setupLayouts } from 'virtual:generated-layouts'
 import App from './App.vue'
-import routes from '~pages'
+import generatedRoutes from '~pages'
 
 import '@unocss/reset/tailwind.css'
 import 'uno.css'
+
+const routes = setupLayouts(generatedRoutes)
 
 const router = createRouter({
   history: createWebHashHistory(),

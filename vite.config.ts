@@ -5,6 +5,7 @@ import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import Pages from 'vite-plugin-pages'
+import Layouts from 'vite-plugin-vue-layouts'
 import type { VitePWAOptions } from 'vite-plugin-pwa'
 import { VitePWA } from 'vite-plugin-pwa'
 import pwaConfig from './pwa.config'
@@ -60,6 +61,8 @@ export default defineConfig({
     Pages({
       extensions: ['vue'],
     }),
+
+    Layouts(),
   ],
 
   test: {
