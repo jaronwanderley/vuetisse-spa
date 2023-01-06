@@ -10,8 +10,21 @@ const animateLeave = () => {
   animate(logobase.value, 400, {}, { transform: { translateZ: '0px', rotateY: '0deg', rotateX: '0deg' } })
   animate(logo.value, 400, {}, { transform: { translateZ: '0px' } })
 }
-const animateMouseMove = (event: MouseEvent) => {
-  const { x: posX, y: posY } = event
+const animateMouseMove = (event: MouseEvent | TouchEvent) => {
+  const { posX, posY } = (() => {
+    if (event instanceof TouchEvent) {
+      const { touches } = event
+      return {
+        posX: touches[0].clientX,
+        posY: touches[0].clientY,
+      }
+    }
+    return {
+      posX: event.x,
+      posY: event.y,
+    }
+  })()
+
   const { x = 0, y = 0, width = 0, height = 0 } = logobase?.value?.getBoundingClientRect() || {}
   const rotateAmount = 45
   animate(
@@ -43,6 +56,9 @@ const animateMouseMove = (event: MouseEvent) => {
       @mouseenter="animateHover"
       @mouseleave="animateLeave"
       @mousemove="animateMouseMove"
+      @touchstart="animateHover"
+      @touchend="animateLeave"
+      @touchmove="animateMouseMove"
     >
       <img
         ref="logo"
