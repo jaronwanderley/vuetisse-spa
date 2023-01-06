@@ -39,7 +39,9 @@ export default defineConfig({
             'parseColor',
             'blend',
           ],
-          redaxios: ['default', 'axios'],
+          redaxios: [
+            ['default', 'axios'],
+          ],
         },
       ],
       dts: 'src/auto-imports.d.ts',
