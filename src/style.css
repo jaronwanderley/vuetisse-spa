@@ -30,7 +30,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-image: url(./jrnwn-bg.svg);
+  background-image: url(/jrnwn-bg.svg);
 }
 
 h1 {
