@@ -26,7 +26,7 @@ const count = computed(() => Object.keys(notifications.value).length)
       <div class="flex text-left items-center px-2">
         {{ message }}
       </div>
-      <div class="relative right-0 top-0 h-7 aspect-square bg-slate-4/20 hover:bg-blue rounded-full flex justify-center items-center cursor-pointer transition duration-300 ease-out">
+      <div class="relative right-0 top-0 h-7 aspect-square hover:bg-slate-4/20 rounded-full flex justify-center items-center cursor-pointer transition duration-300 ease-out">
         <svg
           width="18"
           height="18"
