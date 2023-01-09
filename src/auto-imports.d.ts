@@ -3,6 +3,7 @@ export {}
 declare global {
   const $$: typeof import('vue/macros')['$$']
   const $: typeof import('vue/macros')['$']
+  const $Notification: typeof import('./stores/$Notification')['default']
   const $computed: typeof import('vue/macros')['$computed']
   const $customRef: typeof import('vue/macros')['$customRef']
   const $ref: typeof import('vue/macros')['$ref']
@@ -283,6 +284,7 @@ declare module 'vue' {
   interface ComponentCustomProperties {
     readonly $$: UnwrapRef<typeof import('vue/macros')['$$']>
     readonly $: UnwrapRef<typeof import('vue/macros')['$']>
+    readonly $Notification: UnwrapRef<typeof import('./stores/$Notification')['default']>
     readonly $computed: UnwrapRef<typeof import('vue/macros')['$computed']>
     readonly $customRef: UnwrapRef<typeof import('vue/macros')['$customRef']>
     readonly $ref: UnwrapRef<typeof import('vue/macros')['$ref']>
