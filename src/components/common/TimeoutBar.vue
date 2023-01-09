@@ -28,7 +28,7 @@ watchEffect(() => {
     <div
       ref="bar"
       :class="{
-        'bg-blue': type === 'default',
+        'bg-orange': type === 'default',
         'bg-white/80': type === 'error',
       }"
       class="w-full h-full origin-left"
