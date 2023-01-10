@@ -9,7 +9,9 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Counter: typeof import('./components/Counter.vue')['default']
     JrnwnLogo: typeof import('./components/JrnwnLogo.vue')['default']
+    NotificationArea: typeof import('./components/common/NotificationArea.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TimeoutBar: typeof import('./components/common/TimeoutBar.vue')['default']
   }
 }
