@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@antfu/eslint-config': ^0.34.0
   '@formkit/auto-animate': 1.0.0-beta.5
+  '@jrnwn/utils': ^0.0.1
   '@types/node': ^18.11.18
   '@unocss/reset': ^0.48.0
   '@vitejs/plugin-vue': ^4.0.0
@@ -25,6 +26,7 @@ specifiers:
 
 dependencies:
   '@formkit/auto-animate': 1.0.0-beta.5
+  '@jrnwn/utils': 0.0.1
   '@unocss/reset': 0.48.0
   '@vueuse/core': 9.8.2_vue@3.2.45
   animol: 1.0.12
@@ -1628,6 +1630,10 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
+
+  /@jrnwn/utils/0.0.1:
+    resolution: {integrity: sha512-fJ7/lZA5YTMaRFsYmWp2fTE8a8SuiuIRUrNNQ9/SO+EKeZr0eI7iEZnw/YDAfA/q0Wk0cg2VSXUO6qABdQcIOw==}
+    dev: false
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
