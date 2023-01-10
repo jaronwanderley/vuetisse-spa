@@ -6,7 +6,7 @@ import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 import App from './App.vue'
 import generatedRoutes from '~pages'
 
-import { sortPlugin } from '@/directives/sort'
+import sortDirective from '@/directives/sort'
 
 import '@unocss/reset/tailwind.css'
 import 'uno.css'
@@ -21,6 +21,6 @@ const router = createRouter({
 const app = createApp(App)
 app.use(router)
 app.use(autoAnimatePlugin)
-app.use(sortPlugin)
+app.directive('sort', sortDirective)
 
 app.mount('#app')

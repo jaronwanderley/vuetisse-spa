@@ -1,7 +1,7 @@
-import type { Plugin } from 'vue'
-
 const setDirective = (el: HTMLElement, binding: any) => {
   const { value: options } = binding
+  if (!Array.isArray(options?.items))
+    throw new Error('You need to pass a List of Items to Sort Directive!')
 
   let draggingElement: HTMLElement | null = null
   let draggingElementHandle: HTMLElement | null = null
@@ -13,7 +13,7 @@ const setDirective = (el: HTMLElement, binding: any) => {
 
   const getArray = (element: any) => ([...element])
 
-  const isBefore = (el1: HTMLElement, el2: HTMLElement) => {
+  const isBefore = (el1: any, el2: any) => {
     if (el2.parentNode !== el1.parentNode)
       return false
     for (let cur = el1.previousSibling; cur; cur = cur.previousSibling) {
@@ -49,28 +49,26 @@ const setDirective = (el: HTMLElement, binding: any) => {
       preventDefault,
       stopPropagation,
     } = event
-    const touches = (event instanceof TouchEvent) ? event.touches : []
+    const {
+      clientX,
+      clientY,
+    } = get('touches', event) || [{}]
+    const parentNode = draggingElement?.parentElement
     let hoverEl = target
     if (type === 'touchmove') {
       stopPropagation()
       preventDefault()
       // touch workaround; get all elements we are hovering over, then select one from the list
-      const {
-        clientX,
-        clientY,
-      } = touches[0]
       hoverEl = getArray(document.elementsFromPoint(clientX, clientY))
         .find(v => getArray(draggingElement?.parentElement?.children).includes(v))
     }
-    // if (hoverEl === draggingElement) return
-    if (!getArray(draggingElement?.parentElement?.children).includes(hoverEl))
+    if (!parentNode?.contains(hoverEl as Node))
       return
     draggingElement.classList.add(options.placeholderClass)
-    const node = hoverEl as HTMLElement
-    node?.parentNode?.insertBefore(draggingElement, (isBefore(draggingElement, node)) ? node : node.nextSibling)
   }
 
-  const onDragEnd = () => {
+  const onDragEnd = (event: DragEvent | TouchEvent) => {
+    const { target } = event
     if (!draggingElement)
       return
     if (draggingElementHandle)
@@ -80,13 +78,16 @@ const setDirective = (el: HTMLElement, binding: any) => {
     draggingElement?.parentElement?.classList.remove('drag')
     const from = draggingElementIndex
     const to = getArray(draggingElement?.parentElement?.children).indexOf(draggingElement)
+    const hoverEl = target as HTMLElement
+    const parentNode = draggingElement?.parentElement
+    parentNode?.insertBefore(draggingElement, (isBefore(draggingElement, hoverEl)) ? hoverEl : hoverEl.nextSibling)
     const items = options.items || []
     items.splice(to, 0, items.splice(from, 1)[0]) // move within array
     setTimeout(() => {
       draggingElement = null
       draggingElementIndex = null
       draggingElementHandle = null
-    }, 0)
+    }, 100)
   }
 
   const makeDraggable = (element: HTMLElement, options: any) => {
@@ -125,13 +126,7 @@ const setDirective = (el: HTMLElement, binding: any) => {
   children.forEach((child: HTMLElement, index: number) => makeDraggable(child, options.items[index]))
 }
 
-const sortDirective = {
+export default {
   mounted: setDirective,
   updated: setDirective,
-}
-
-export const sortPlugin: Plugin = {
-  install(app) {
-    app.directive('sort', sortDirective)
-  },
 }
