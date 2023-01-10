@@ -38,15 +38,20 @@ export default defineConfig({
         'vue/macros',
         '@vueuse/core',
         {
-          animol: [
+          'animol': [
             ['css', 'animate'],
             'ease',
             ['Easing', 'easing'],
             'parseColor',
             'blend',
           ],
-          redaxios: [
+          'redaxios': [
             ['default', 'axios'],
+          ],
+          '@jrnwn/utils': [
+            'get',
+            'set',
+            'getListOfPaths',
           ],
         },
       ],
