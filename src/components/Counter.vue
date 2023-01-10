@@ -4,6 +4,7 @@ const count = $ref(0)
 
 <template>
   <button
+    v-ripple
     class="bg-slate-2/50 py-4 rounded-xl"
     @click="count++"
   >
