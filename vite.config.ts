@@ -49,6 +49,13 @@ export default defineConfig({
             ['default', 'axios'],
           ],
           '@jrnwn/utils': [
+            'typeOf',
+            'createEl',
+            'setClass',
+            'removeClass',
+            'setStyle',
+            'getSelector',
+            'platform',
             'get',
             'set',
             'getListOfPaths',
