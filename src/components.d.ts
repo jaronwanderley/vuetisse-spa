@@ -8,6 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Counter: typeof import('./components/Counter.vue')['default']
+    InfiniteScroll: typeof import('./components/common/InfiniteScroll.vue')['default']
     JrnwnLogo: typeof import('./components/JrnwnLogo.vue')['default']
     NotificationArea: typeof import('./components/common/NotificationArea.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
