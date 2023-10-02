@@ -45,8 +45,8 @@ export default defineConfig({
             'parseColor',
             'blend',
           ],
-          'redaxios': [
-            ['default', 'axios'],
+          'itty-fetcher': [
+            'fetcher'
           ],
           '@jrnwn/utils': [
             'typeOf',
