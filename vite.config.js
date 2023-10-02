@@ -6,7 +6,6 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
-import type { VitePWAOptions } from 'vite-plugin-pwa'
 import { VitePWA } from 'vite-plugin-pwa'
 import pwaConfig from './pwa.config'
 
@@ -76,7 +75,7 @@ export default defineConfig({
       dts: 'src/components.d.ts',
     }),
 
-    VitePWA(pwaConfig as Partial<VitePWAOptions>),
+    VitePWA(pwaConfig),
 
     Pages({
       extensions: ['vue'],

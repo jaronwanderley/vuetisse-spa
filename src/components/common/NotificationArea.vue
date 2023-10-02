@@ -1,5 +1,5 @@
-<script setup lang="ts">
-const { notifications, remove } = $Notification
+<script setup>
+const { notifications, remove } = useNotification
 const count = computed(() => Object.keys(notifications.value).length)
 </script>
 

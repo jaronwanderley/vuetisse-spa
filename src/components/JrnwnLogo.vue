@@ -1,6 +1,6 @@
-<script setup lang="ts">
-const logobase = ref(null) as unknown as { value: HTMLElement }
-const logo = ref(null) as unknown as { value: HTMLElement }
+<script setup>
+const logobase = ref(null)
+const logo = ref(null)
 
 const animateHover = () => {
   animate(logobase.value, 400, {}, { transform: { translateZ: '70px' } })
@@ -10,7 +10,7 @@ const animateLeave = () => {
   animate(logobase.value, 400, {}, { transform: { translateZ: '0px', rotateY: '0deg', rotateX: '0deg' } })
   animate(logo.value, 400, {}, { transform: { translateZ: '0px' } })
 }
-const animateMouseMove = (event: MouseEvent | TouchEvent) => {
+const animateMouseMove = event => {
   const { posX, posY } = handlePosition(event)
 
   const { x = 0, y = 0, width = 0, height = 0 } = logobase?.value?.getBoundingClientRect() || {}

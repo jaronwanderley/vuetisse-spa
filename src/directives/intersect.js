@@ -1,29 +1,4 @@
-// Utils
-import type {
-  DirectiveBinding,
-} from 'vue'
-
-// Types
-
-type ObserveHandler = (
-  isIntersecting: boolean,
-  entries: IntersectionObserverEntry[],
-  observer: IntersectionObserver,
-) => void
-
-export interface ObserveDirectiveBinding extends Omit<DirectiveBinding, 'modifiers' | 'value'> {
-  value?: ObserveHandler | { handler: ObserveHandler; options?: IntersectionObserverInit }
-  modifiers: {
-    once?: boolean
-    quiet?: boolean
-  }
-}
-
-interface IODElement extends HTMLElement {
-  _observe?: any
-}
-
-function mounted(el: IODElement, binding: ObserveDirectiveBinding) {
+function mounted(el, binding) {
   if (!('IntersectionObserver' in window)
   || !('IntersectionObserverEntry' in window)
   || !('intersectionRatio' in window.IntersectionObserverEntry.prototype)
@@ -37,10 +12,10 @@ function mounted(el: IODElement, binding: ObserveDirectiveBinding) {
     : { handler: value, options: {} }
 
   const observer = new IntersectionObserver((
-    entries: IntersectionObserverEntry[] = [],
-    observer: IntersectionObserver,
+    entries = [],
+    observer,
   ) => {
-    const _observe = el._observe?.[binding.instance!.$.uid]
+    const _observe = el._observe?.[binding.instance.$.uid]
     if (!_observe)
       return // Just in case, should never fire
 
@@ -66,18 +41,18 @@ function mounted(el: IODElement, binding: ObserveDirectiveBinding) {
   }, options)
 
   el._observe = Object(el._observe)
-  el._observe![binding.instance!.$.uid] = { init: false, observer }
+  el._observe[binding.instance.$.uid] = { init: false, observer }
 
   observer.observe(el)
 }
 
-function unmounted(el: IODElement, binding: ObserveDirectiveBinding) {
-  const observe = el._observe?.[binding.instance!.$.uid]
+function unmounted(el, binding) {
+  const observe = el._observe?.[binding.instance.$.uid]
   if (!observe)
     return
 
   observe.observer.unobserve(el)
-  delete el._observe![binding.instance!.$.uid]
+  delete el._observe[binding.instance.$.uid]
 }
 
 export const Intersect = {
