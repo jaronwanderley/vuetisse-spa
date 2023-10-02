@@ -1,19 +1,19 @@
-const setDirective = (el: HTMLElement, binding: any) => {
+const setDirective = (el, binding) => {
   const { value: options } = binding
   if (!Array.isArray(options?.items))
     throw new Error('You need to pass a List of Items to Sort Directive!')
 
-  let draggingElement: HTMLElement | null = null
-  let draggingElementHandle: HTMLElement | null = null
-  let draggingElementIndex: number | null = null
+  let draggingElement = null
+  let draggingElementHandle = null
+  let draggingElementIndex = null
 
   const draggable = 'draggable'
 
-  const setDraggable = (element: HTMLElement, value: Object) => element.setAttribute(draggable, `${value}`)
+  const setDraggable = (element, value) => element.setAttribute(draggable, `${value}`)
 
-  const getArray = (element: any) => ([...element])
+  const getArray = (element) => ([...element])
 
-  const isBefore = (el1: any, el2: any) => {
+  const isBefore = (el1, el2) => {
     if (el2.parentNode !== el1.parentNode)
       return false
     for (let cur = el1.previousSibling; cur; cur = cur.previousSibling) {
@@ -22,8 +22,8 @@ const setDirective = (el: HTMLElement, binding: any) => {
     }
   }
 
-  const onDragStart = (event: DragEvent | TouchEvent) => {
-    const target = event.target as HTMLElement
+  const onDragStart = event => {
+    const target = event.target
     if (target.getAttribute(draggable) !== 'true')
       return
     // `touchstart` event doesn't have `dataTransfer` property
@@ -40,7 +40,7 @@ const setDirective = (el: HTMLElement, binding: any) => {
     draggingElement?.parentElement?.classList.add('drag')
   }
 
-  const onDragEnter = (event: DragEvent | TouchEvent) => {
+  const onDragEnter = event => {
     if (!draggingElement)
       return
     const {
@@ -62,12 +62,12 @@ const setDirective = (el: HTMLElement, binding: any) => {
       hoverEl = getArray(document.elementsFromPoint(clientX, clientY))
         .find(v => getArray(draggingElement?.parentElement?.children).includes(v))
     }
-    if (!parentNode?.contains(hoverEl as Node))
+    if (!parentNode?.contains(hoverEl))
       return
     draggingElement.classList.add(options.placeholderClass)
   }
 
-  const onDragEnd = (event: DragEvent | TouchEvent) => {
+  const onDragEnd = event => {
     const { target } = event
     if (!draggingElement)
       return
@@ -78,7 +78,7 @@ const setDirective = (el: HTMLElement, binding: any) => {
     draggingElement?.parentElement?.classList.remove('drag')
     const from = draggingElementIndex
     const to = getArray(draggingElement?.parentElement?.children).indexOf(draggingElement)
-    const hoverEl = target as HTMLElement
+    const hoverEl = target
     const parentNode = draggingElement?.parentElement
     parentNode?.insertBefore(draggingElement, (isBefore(draggingElement, hoverEl)) ? hoverEl : hoverEl.nextSibling)
     const items = options.items || []
@@ -90,8 +90,8 @@ const setDirective = (el: HTMLElement, binding: any) => {
     }, 100)
   }
 
-  const makeDraggable = (element: HTMLElement, options: any) => {
-    const handleElement = options.handleClass && element.querySelector(`.${options.handleClass}`) as HTMLElement
+  const makeDraggable = (element, options) => {
+    const handleElement = options.handleClass && element.querySelector(`.${options.handleClass}`)
     if (handleElement) { // handle makes item draggable
       handleElement.onmousedown = () => {
         setDraggable(element, true)
@@ -107,8 +107,8 @@ const setDirective = (el: HTMLElement, binding: any) => {
         element?.parentElement?.classList.remove('drag')
         setDraggable(element, false)
       }
-      element.ondragend = (event: DragEvent) => {
-        setDraggable(event.target as HTMLElement, false)
+      element.ondragend = (event) => {
+        setDraggable(event.target, false)
       }
     }
     else {
@@ -123,7 +123,7 @@ const setDirective = (el: HTMLElement, binding: any) => {
   }
 
   const children = getArray(el.children)
-  children.forEach((child: HTMLElement, index: number) => makeDraggable(child, options.items[index]))
+  children.forEach((child, index) => makeDraggable(child, options.items[index]))
 }
 
 export default {

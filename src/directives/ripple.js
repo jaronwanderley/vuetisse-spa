@@ -1,10 +1,4 @@
-interface DirectiveOptions {
-  el: any
-  options: Function
-  config?: any
-}
-
-const setRipple = ({ el, options, config }: DirectiveOptions) => {
+const setRipple = ({ el, options, config }) => {
   setStyle(el, {
     position: 'relative',
     overflow: 'hidden',
@@ -13,7 +7,7 @@ const setRipple = ({ el, options, config }: DirectiveOptions) => {
   if (el._RD)
     el.removeEventListener('click', el._RD)
 
-  el._RD = (event: MouseEvent) => {
+  el._RD = event => {
     // get options
     const typeOptions = typeOf(options())
     if (options() && typeOptions !== 'Object') {
@@ -56,9 +50,9 @@ const setRipple = ({ el, options, config }: DirectiveOptions) => {
   el.addEventListener('click', el._RD, false)
 }
 
-export default (config: any) => {
+export default (config) => {
   return {
-    mounted(el: any, binding: any) {
+    mounted(el, binding) {
       const options = () => binding.value
       setRipple({ el, options, config })
     },
