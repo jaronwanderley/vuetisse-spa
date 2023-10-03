@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
-import './style.css'
+import '@/assets/style.css'
+
 // @unocss-include
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { setupLayouts } from 'virtual:generated-layouts'
