@@ -1,4 +1,4 @@
-const setRipple = ({ el, options, config }) => {
+function setRipple({ el, options, config }) {
   setStyle(el, {
     position: 'relative',
     overflow: 'hidden',
@@ -7,7 +7,7 @@ const setRipple = ({ el, options, config }) => {
   if (el._RD)
     el.removeEventListener('click', el._RD)
 
-  el._RD = event => {
+  el._RD = (event) => {
     // get options
     const typeOptions = typeOf(options())
     if (options() && typeOptions !== 'Object') {

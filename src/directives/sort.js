@@ -1,4 +1,4 @@
-const setDirective = (el, binding) => {
+function setDirective(el, binding) {
   const { value: options } = binding
   if (!Array.isArray(options?.items))
     throw new Error('You need to pass a List of Items to Sort Directive!')
@@ -11,7 +11,7 @@ const setDirective = (el, binding) => {
 
   const setDraggable = (element, value) => element.setAttribute(draggable, `${value}`)
 
-  const getArray = (element) => ([...element])
+  const getArray = element => ([...element])
 
   const isBefore = (el1, el2) => {
     if (el2.parentNode !== el1.parentNode)
@@ -22,7 +22,7 @@ const setDirective = (el, binding) => {
     }
   }
 
-  const onDragStart = event => {
+  const onDragStart = (event) => {
     const target = event.target
     if (target.getAttribute(draggable) !== 'true')
       return
@@ -40,7 +40,7 @@ const setDirective = (el, binding) => {
     draggingElement?.parentElement?.classList.add('drag')
   }
 
-  const onDragEnter = event => {
+  const onDragEnter = (event) => {
     if (!draggingElement)
       return
     const {
@@ -67,7 +67,7 @@ const setDirective = (el, binding) => {
     draggingElement.classList.add(options.placeholderClass)
   }
 
-  const onDragEnd = event => {
+  const onDragEnd = (event) => {
     const { target } = event
     if (!draggingElement)
       return

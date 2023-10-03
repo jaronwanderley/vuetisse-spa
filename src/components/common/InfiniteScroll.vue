@@ -24,12 +24,12 @@ const props = defineProps({
 const emit = defineEmits(['update:modelValue'])
 const slots = useSlots()
 
-const onUpdate = async () => {
+async function onUpdate() {
   emit('update:modelValue', true)
   await props.onLoad()
   emit('update:modelValue', false)
 }
-const onIntersect = () => {
+function onIntersect() {
   if (props.modelValue || props.disabled)
     return
   onUpdate()

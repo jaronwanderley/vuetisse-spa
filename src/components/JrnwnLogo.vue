@@ -2,15 +2,15 @@
 const logobase = ref(null)
 const logo = ref(null)
 
-const animateHover = () => {
+function animateHover() {
   animate(logobase.value, 400, {}, { transform: { translateZ: '70px' } })
   animate(logo.value, 400, {}, { transform: { translateZ: '30px' } })
 }
-const animateLeave = () => {
+function animateLeave() {
   animate(logobase.value, 400, {}, { transform: { translateZ: '0px', rotateY: '0deg', rotateX: '0deg' } })
   animate(logo.value, 400, {}, { transform: { translateZ: '0px' } })
 }
-const animateMouseMove = event => {
+function animateMouseMove(event) {
   const { posX, posY } = handlePosition(event)
 
   const { x = 0, y = 0, width = 0, height = 0 } = logobase?.value?.getBoundingClientRect() || {}

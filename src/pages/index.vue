@@ -15,6 +15,6 @@ onMounted(() => {
   <Counter />
   <div>{{ posts.loading ? 'Carregando...' : 'carregou!' }}</div>
   <div v-if="!posts.loading && !postCount.loading">
-    Posts count is {{ posts.data?.length || 0}} or  {{ postCount.data }}
+    Posts count is {{ posts.data?.length || 0 }} or  {{ postCount.data }}
   </div>
 </template>

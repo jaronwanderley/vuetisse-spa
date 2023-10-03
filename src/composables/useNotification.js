@@ -1,6 +1,6 @@
 const state = ref(new Map())
 
-export const notify = ({ message, id = Date.now(), timeout, type }) => {
+export function notify({ message, id = Date.now(), timeout, type }) {
   state.value.set(id, {
     message,
     timeout,
@@ -14,11 +14,11 @@ export const notify = ({ message, id = Date.now(), timeout, type }) => {
   }
 }
 
-export const throwError = ({ message, id = Date.now(), timeout = 3 }) => {
+export function throwError({ message, id = Date.now(), timeout = 3 }) {
   notify({ message, id, timeout, type: 'error' })
 }
 
-const remove = id => {
+function remove(id) {
   state.value.delete(id)
 }
 

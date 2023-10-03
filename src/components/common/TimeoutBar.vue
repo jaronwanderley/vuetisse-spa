@@ -2,7 +2,7 @@
 const props = defineProps({
   timeout: {
     type: Number,
-    default: Infinity,
+    default: Number.POSITIVE_INFINITY,
   },
   type: {
     type: String,
@@ -15,11 +15,9 @@ const bar = ref(null)
 watchEffect(() => {
   if (bar.value === null)
     return
-  if (props.timeout >= Infinity)
+  if (props.timeout >= Number.POSITIVE_INFINITY)
     return
-  animate(bar.value, props.timeout * 1000,
-    { transform: { scaleX: '100%' } },
-    { transform: { scaleX: '0%' } })
+  animate(bar.value, props.timeout * 1000, { transform: { scaleX: '100%' } }, { transform: { scaleX: '0%' } })
 })
 </script>
 

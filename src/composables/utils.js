@@ -1,5 +1,5 @@
-export const handlePosition = event => {
-  const {x, y, touches} = event
+export function handlePosition(event) {
+  const { x, y, touches } = event
   const [{ clientX = 0, clientY = 0 }] = touches || [{}]
 
   return {
