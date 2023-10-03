@@ -1,13 +1,6 @@
 const state = ref(new Map())
 
-interface NotificationOptions {
-  message: string
-  id?: number | string
-  timeout?: number
-  type?: string
-}
-
-const notify = ({ message, id = Date.now(), timeout, type }: NotificationOptions) => {
+export const notify = ({ message, id = Date.now(), timeout, type }) => {
   state.value.set(id, {
     message,
     timeout,
@@ -21,11 +14,11 @@ const notify = ({ message, id = Date.now(), timeout, type }: NotificationOptions
   }
 }
 
-const throwError = ({ message, id = Date.now(), timeout = 3 }: NotificationOptions) => {
+export const throwError = ({ message, id = Date.now(), timeout = 3 }) => {
   notify({ message, id, timeout, type: 'error' })
 }
 
-const remove = (id: number | string) => {
+const remove = id => {
   state.value.delete(id)
 }
 
