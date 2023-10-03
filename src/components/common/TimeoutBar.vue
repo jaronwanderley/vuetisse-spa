@@ -1,4 +1,4 @@
-<script setups>
+<script setup>
 const props = defineProps({
   timeout: {
     type: Number,
