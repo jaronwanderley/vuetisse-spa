@@ -1,1 +1,0 @@
-import{_ as e,o,c as s,t as c}from"./index-77696405.js";const n={},r={class:"font-bold text-3xl"};function a(t,_){return o(),s("h1",r," Title "+c(t.$attrs.id),1)}const l=e(n,[["render",a]]);export{l as default};
